@@ -2,11 +2,14 @@
 <Scene>
   <Children>
     <Object name="Sphere">
-      <Transform rotation="(0, 0, 0, 1)" position="(2.14, 2.42, -3.42)" scale="(1, 1, 1)" />
+      <Transform rotation="(0, 0, 0, 1)" position="(2.14, 1, -3.42)" scale="(1, 1, 1)" />
       <Children />
       <Components>
         <Component type="ForgeRenderer">
-          <Data color="#2800FFFF" emission-color="#13FF00FF" />
+          <Data color="#00FF00FF" emission-color="#FF0000FF" />
+        </Component>
+        <Component type="ForgeRigidbody">
+          <Data mass="1" drag="0" angular-drag="0.05" use-gravity="True" constraints="None" />
         </Component>
       </Components>
     </Object>

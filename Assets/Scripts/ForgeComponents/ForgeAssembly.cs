@@ -54,6 +54,17 @@ namespace Platforge{
 
         }
 
+        public class DestroyGameObject : Command {
+
+            public int ObjectReference;
+
+            public override void Run(UnityEngine.Object[] registers) {
+                GameObject go = registers[ObjectReference] as GameObject;
+                Destroy(go);
+            }
+
+        }
+
         public class ArithmaticExpression : Command {
             public int LeftReference;
             public int RightReference;
@@ -136,7 +147,6 @@ namespace Platforge{
 
         public static void RunCommandList(List<Command> list) {
             UnityEngine.Object[] registers = new UnityEngine.Object[10];
-            registers[0] = new Number(10f);
 
             foreach (Command c in list) {
                 c.Run(registers);
