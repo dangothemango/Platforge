@@ -43,8 +43,8 @@ namespace Platforge{
 
         public class SetGameobjectActive : Command {
 
-            int IsActiveReference;
-            int ObjectReference;
+            public int IsActiveReference;
+            public int ObjectReference;
 
             public override void Run(UnityEngine.Object[] registers) {
                 Bool isActive = registers[IsActiveReference] as Bool;
@@ -129,7 +129,7 @@ namespace Platforge{
         public class EqualsZero : ConditionalExpression {
 
             public override void Run(UnityEngine.Object[] registers) {
-                registers[ResultReference] = new Bool((registers[CompareReference] as Number).value = 0);
+                registers[ResultReference] = new Bool((registers[CompareReference] as Number).value == 0);
             }
 
         }
