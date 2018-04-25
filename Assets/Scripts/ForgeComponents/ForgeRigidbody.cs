@@ -10,65 +10,53 @@ namespace Platforge {
 
         Rigidbody rb;
 
-        [Header("Config")]
-        [SerializeField] float mass = 1f;
-        [SerializeField] float drag = 0;
-        [SerializeField] float angularDrag = 0.05f;
-        [SerializeField] bool useGravity = true;
-        [SerializeField] RigidbodyConstraints constraints = RigidbodyConstraints.None;
-
         public float Mass {
             get {
-                return mass;
+                return rb.mass;
             }
 
             set {
                 rb.mass = value;
-                mass = value;
             }
         }
 
         public float Drag {
             get {
-                return drag;
+                return rb.drag;
             }
 
             set {
                 rb.drag = value;
-                drag = value;
             }
         }
 
         public float AngularDrag {
             get {
-                return angularDrag;
+                return rb.angularDrag;
             }
 
             set {
                 rb.angularDrag = value;
-                angularDrag = value;
             }
         }
 
         public bool UseGravity {
             get {
-                return useGravity;
+                return rb.useGravity;
             }
 
             set {
                 rb.useGravity = value;
-                useGravity = value;
             }
         }
 
         public RigidbodyConstraints Constraints {
             get {
-                return constraints;
+                return rb.constraints;
             }
 
             set {
-                rb.constraints = constraints;
-                constraints = value;
+                rb.constraints = value;
             }
         }
 
@@ -81,17 +69,12 @@ namespace Platforge {
             DoStart();
         }
 
-        // Update is called once per frame
-        void Update() {
-            
-        }
-
         public override void DeserializeData(XmlElement data) {
             Mass = float.Parse(data.GetAttribute("mass", string.Empty));
             Drag = float.Parse(data.GetAttribute("drag", string.Empty));
             AngularDrag = float.Parse(data.GetAttribute("angular-drag", string.Empty));
             UseGravity = bool.Parse(data.GetAttribute("use-gravity", string.Empty));
-            constraints = RigidbodyConstraintsParse(data.GetAttribute("constraints", string.Empty));
+            Constraints = RigidbodyConstraintsParse(data.GetAttribute("constraints", string.Empty));
         }
 
         public override XmlElement SerializeData(XmlDocument doc) {
@@ -104,11 +87,25 @@ namespace Platforge {
             element.SetAttribute("constraints", string.Empty, Constraints.ToString());
 
             return element;
-
         }
 
         RigidbodyConstraints RigidbodyConstraintsParse(string rbc) {
-            return RigidbodyConstraints.None;
+            switch (rbc) {
+                case "None":
+                    return RigidbodyConstraints.None;
+                case "FreezePosition":
+                    return RigidbodyConstraints.FreezePosition;
+                case "FreezeRotation":
+                    return RigidbodyConstraints.FreezeRotation;
+                case "FreezeAll":
+                    return RigidbodyConstraints.FreezeAll;
+                default:
+                    return RigidbodyConstraints.None;
+            }
+        }
+
+        private void OnDestroy() {
+            Destroy(rb);
         }
     }
 

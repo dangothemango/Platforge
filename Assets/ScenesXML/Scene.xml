@@ -1,32 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Scene>
   <Children>
-    <Object name="Cube">
-      <Transform rotation="(0.8788, 0, 0, 0.4772)" position="(0, 3.481, 0)" scale="(1, 1, 1)" />
-      <Children>
-        <Object name="Capsule">
-          <Transform rotation="(0.7071, -2.498E-06, 2.53E-06, 0.7071)" position="(1.92, 2.123, -2.98E-05)" scale="(0.75, 0.75, 2)" />
-          <Children />
-          <Components>
-            <Component type="ForgeRigidbody">
-              <Data mass="1" drag="0" angular-drag="0.05" use-gravity="False" constraints="None" />
-            </Component>
-          </Components>
-        </Object>
-        <Object name="Cube">
-          <Transform rotation="(0, 0, 0, 1)" position="(3.509, 0, 0)" scale="(1, 1, 1)" />
-          <Children />
-          <Components />
-        </Object>
-      </Children>
-      <Components />
-    </Object>
     <Object name="Sphere">
-      <Transform rotation="(0, 0, 0, 1)" position="(0.96, 3.03, -5.25)" scale="(1, 1, 1)" />
+      <Transform rotation="(0, 0, 0, 1)" position="(2.14, 2.42, -3.42)" scale="(1, 1, 1)" />
       <Children />
       <Components>
-        <Component type="ForgeRigidbody">
-          <Data mass="1" drag="0" angular-drag="0.05" use-gravity="False" constraints="None" />
+        <Component type="ForgeRenderer">
+          <Data color="#2800FFFF" emission-color="#13FF00FF" />
         </Component>
       </Components>
     </Object>

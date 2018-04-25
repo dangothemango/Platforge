@@ -11,7 +11,8 @@ namespace Platforge {
 
         static readonly System.Type[] typesArray =  {
             typeof(ForgeComponent),
-            typeof(ForgeRigidbody)
+            typeof(ForgeRigidbody),
+            typeof(ForgeRenderer)
         };
 
         static Dictionary<string,System.Type> typesDict = new Dictionary<string, Type>();
@@ -31,14 +32,30 @@ namespace Platforge {
             }
         }
 
+        private void Awake() {
+            DoAwake();
+        }
+
+        protected virtual void DoAwake() {
+
+        }
+
         private void Start() {
             DoStart();
         }
 
-        public virtual void DoStart() {
+        protected virtual void DoStart() {
             if (!Types.ContainsKey(this.GetType().Name)) {
                 throw new Exception(string.Format("Type {0} not included in ForgeComponent.types array" , this.GetType().Name));
             }
+        }
+
+        private void Update() {
+            DoUpdate();
+        }
+
+        protected virtual void DoUpdate() {
+
         }
 
         public virtual void DeserializeData(XmlElement data) {
@@ -50,6 +67,7 @@ namespace Platforge {
 
             return element;
         }
+        
 
     }
 }
