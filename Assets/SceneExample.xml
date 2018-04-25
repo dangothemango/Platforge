@@ -1,0 +1,5 @@
+<Scene name = "ExampleScene">
+	<Object type="BaseForgeable">
+		<Transform position =" " rotation =" "/>
+	</Object>
+</Scene>
